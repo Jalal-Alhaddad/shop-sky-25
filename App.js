@@ -2,18 +2,21 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { fetchAllCategories } from './utils/api';
 import { useState } from 'react';
+import { Greeting } from './screens/Greeting';
 
 export default function App() {
+
+const [categories, setCategories] = useState([]);
 
   const fetchData = async () => {
     const data = await fetchAllCategories();
     console.log(data);
-
+    setCategories(data);
   };
 
   return (
     <View style={styles.container}>
-      <Text>Hello from Jalal</Text>
+      <Greeting name="Sky group" tafe="Hornsby" />
       <StatusBar style="auto" />
     </View>
   );
